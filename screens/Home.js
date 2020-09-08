@@ -22,11 +22,10 @@ export default class Home extends Component {
             {id : 3, title : "Message" , icon : messageImage}
         ],
         profiles : [
-            {id : 1, name : "Add Story" , age : 0, image : plusImage, university : ""},
+            {id : 1, name : "Vân Anh" , age : 20, image : avata, university : "Trường Cao đẳng sư phạm Hà Nội"},
             {id : 2, name : "Vân Anh" , age : 20, image : avata, university : "Trường Cao đẳng sư phạm Hà Nội"},
             {id : 3, name : "Vân Anh" , age : 20, image : avata, university : "Trường Cao đẳng sư phạm Hà Nội"},
-            {id : 4, name : "Vân Anh" , age : 20, image : avata, university : "Trường Cao đẳng sư phạm Hà Nội"},
-            {id : 5, name : "Vân Anh" , age : 20, image : avata, university : "Trường Cao đẳng sư phạm Hà Nội"}
+            {id : 4, name : "Vân Anh" , age : 20, image : avata, university : "Trường Cao đẳng sư phạm Hà Nội"}
         ]
     }  
   };
@@ -38,18 +37,22 @@ export default class Home extends Component {
                 <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
                     <View style={styles.header}>
                         <Text style={styles.titleHeader}>Dating</Text>
-                        <TouchableOpacity style={styles.backgroundIconSetting} activeOpacity={0.5}>
+                        <TouchableOpacity 
+                          style={styles.backgroundIconSetting}
+                          activeOpacity={0.5}
+                          onPress = { () => alert("Click Setting") }
+                        >
                             <Image source={settingsImage} style={styles.imgHeader}/>
                         </TouchableOpacity>
                     </View>
                     <FlatList 
-                    data={categories}
-                    contentContainerStyle={styles.Categories}
-                    numColumns={3}
-                    renderItem={ ({item}) => 
+                      data={categories}
+                      contentContainerStyle={styles.Categories}
+                      numColumns={3}
+                      renderItem={ ({item}) => 
                         <Category category={item} />
-                    }
-                    keyExtractor={ (item) => `${item.id}`}
+                      }
+                      keyExtractor={ (item) => `${item.id}`}
                     />
                     <View>
                         <Profile profile={profiles[1]}/>
@@ -58,15 +61,28 @@ export default class Home extends Component {
                     <View>
                         <Text style={styles.suggestedStories}>Suggested Stories</Text>
                     </View>
-                    <FlatList
-                    data={profiles}
-                    contentContainerStyle={styles.renderProfile}
-                    numColumns={5}
-                    renderItem = { ({item}) => 
-                        <ProfileListItem profileItem={item} />
-                    }
-                    keyExtractor={ (item) => `${item.id}`}
-                    />
+                    <View style={styles.Story}>
+                      <View style={styles.addStory}>
+                        <TouchableOpacity 
+                          style={styles.imgAddStory}
+                          activeOpacity={0.5}
+                          onPress={ () => alert("Add Story")}
+                        >
+                          <Image style={styles.imgAvata} source={plusImage}/>
+                        </TouchableOpacity>
+                        <Text style={styles.nameAvata}>Add Story</Text>
+                      </View>
+                      <View style={styles.renderProfile}>
+                        <FlatList
+                          data={profiles}
+                          numColumns={5}
+                          renderItem = { ({item}) => 
+                            <ProfileListItem profileItem={item} />
+                          }
+                          keyExtractor={ (item) => `${item.id}`}
+                        />
+                      </View>
+                    </View>
                 </ScrollView>
             </SafeAreaView>
         </View>
@@ -114,6 +130,36 @@ const styles = StyleSheet.create({
       fontSize : 21,
       fontWeight : '700',
       marginLeft : 15
+    },
+    Story : {
+      flex : 1,
+      flexDirection : 'row'
+    },
+    addStory : {
+      flex : 20,
+      margin : 10,
+      alignItems : "center"
+    },
+    renderProfile : {
+      flex : 80
+    },
+    imgAddStory : {
+      borderRadius: 60/2,
+      width : 60,
+      height : 60,
+      padding : 8,
+      borderWidth : 1,
+      borderColor : 'rgba(222, 73, 212, 0.7)',
+      backgroundColor : 'rgba(255, 235, 211, 0.57)',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    imgAvata : {
+      width : 30,
+      height : 30
+    },
+    nameAvata : {
+        fontSize : 13
     }
   });
   

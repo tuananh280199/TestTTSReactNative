@@ -6,7 +6,11 @@ export default function ProfileListItem(props){
     const { profileItem } = props;
     return (
         <View style={styles.container}> 
-            <TouchableOpacity style={styles.touchable} activeOpacity={0.5}>
+            <TouchableOpacity 
+            style={styles.touchable} 
+            activeOpacity={0.5}
+            onPress = { () => alert("Click Avata") }
+            >
                 <Image style={styles.imgAvata} source={profileItem.image}/>
                 <Text style={styles.nameAvata}>{profileItem.name}</Text>
             </TouchableOpacity>

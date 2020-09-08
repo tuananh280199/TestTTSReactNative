@@ -5,9 +5,13 @@ export default function Category(props){
     const { category } = props;
     return(
         <View style={styles.container}>
-            <TouchableOpacity style={styles.touchable} activeOpacity={0.5}>
-                <Image style={styles.categoryImage} source={category.icon}/>
-                <Text style={styles.title}>{category.title}</Text>
+            <TouchableOpacity 
+                style={styles.touchable}
+                activeOpacity={0.5}
+                onPress = { () => alert("Click Category")}
+            >
+                    <Image style={styles.categoryImage} source={category.icon}/>
+                    <Text style={styles.title}>{category.title}</Text>
             </TouchableOpacity>
         </View>
     )
