@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native';
 
 import multiply from '../assets/multiply.png';
 import likeImage from '../assets/heart.png';
@@ -10,16 +10,16 @@ export default function Profile(props){
         <View style={styles.container}>
             <Image style={styles.profileImage}  source={profile.image}/>
             <View style={styles.info}>
-                <Text style={styles.profileName}>{profile.name},{profile.age}</Text>
+                <Text style={styles.profileName}>{profile.name}, {profile.age}</Text>
                 <Text style={styles.profileUniversity}>{profile.university}</Text>
             </View>
             <View style={styles.iconGroup}>
-                <View style={styles.iconGroup1}>
+                <TouchableOpacity style={styles.iconGroup1} activeOpacity={0.5}>
                     <Image style={styles.iconClose} source={multiply}/>
-                </View>
-                <View style={styles.iconGroup2}>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.iconGroup2} activeOpacity={0.5}>
                     <Image style={styles.iconHeart} source={likeImage}/>
-                </View>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         height : 320
     },
     info : {
-        margin : 15
+        margin : 20
     },
     profileName : {
         fontSize : 28
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         height : 50,
         borderRadius : 50/2,
         shadowColor: '#000',
-        shadowOpacity : 0.3,
+        shadowOpacity : 0.5,
         shadowRadius : 15,
         shadowOffset : {width : 0, height : 0},
         elevation: 8
